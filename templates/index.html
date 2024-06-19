@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender Prediction Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .submit-btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center animate__animated animate__fadeInDown">Gender Prediction Form</h1>
+        <form action="/predict" method="post" class="animate__animated animate__fadeInUp" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="Age">Age:</label>
+                <input type="number" class="form-control" id="Age" name="Age" required>
+            </div>
+            <div class="form-group">
+                <label for="Height">Height (cm):</label>
+                <input type="number" class="form-control" id="Height" name="Height (cm)" required>
+            </div>
+            <div class="form-group">
+                <label for="Weight">Weight (kg):</label>
+                <input type="number" class="form-control" id="Weight" name="Weight (kg)" required>
+            </div>
+            <div class="form-group">
+                <label for="Occupation">Occupation:</label>
+                <select class="form-control" id="Occupation" name="Occupation" required>
+                    <option value="" disabled selected>Select your occupation</option>
+                    <option value="Software Engineer">Software Engineer</option>
+                    <option value="Sales Representative">Sales Representative</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Lawyer">Lawyer</option>
+                    <option value="Graphic Designer">Graphic Designer</option>
+                    <option value="Accountant">Accountant</option>
+                    <option value="Analyst">Analyst</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Education">Education Level:</label>
+                <select class="form-control" id="Education" name="Education Level" required>
+                    <option value="" disabled selected>Select your education level</option>
+                    <option value="Master's Degree">Master's Degree</option>
+                    <option value="Bachelor's Degree">Bachelor's Degree</option>
+                    <option value="Doctorate Degree">Doctorate Degree</option>
+                    <option value="Associate's Degree">Associate's Degree</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="MaritalStatus">Marital Status:</label>
+                <select class="form-control" id="MaritalStatus" name="Marital Status" required>
+                    <option value="" disabled selected>Select your marital status</option>
+                    <option value="Married">Married</option>
+                    <option value="Single">Single</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="FavoriteColor">Favorite Color:</label>
+                <select class="form-control" id="FavoriteColor" name="Favorite Color" required>
+                    <option value="" disabled selected>Select your favorite color</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Green">Green</option>
+                    <option value="Purple">Purple</option>
+                    <option value="Red">Red</option>
+                    <option value="Yellow">Yellow</option>
+                    <option value="Black">Black</option>
+                    <option value="Grey">Grey</option>
+                    <option value="Orange">Orange</option>
+                    <option value="Pink">Pink</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block submit-btn">Predict</button>
+        </form>
+    </div>
+
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function validateForm() {
+            var isValid = true;
+            var fields = ['Occupation', 'Education', 'Marital Status', 'Favorite Color'];
+            for (var i = 0; i < fields.length; i++) {
+                var selectElement = document.getElementById(fields[i]);
+                if (selectElement.value === '') {
+                    isValid = false;
+                    alert('Please fill out the ' + fields[i] + ' field.');
+                    break;
+                }
+            }
+            return isValid;
+        }
+    </script>
+</body>
+</html>
